@@ -1,39 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelPc - Iniciar Sesión</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelPC - Iniciar Sesión</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1><a>PixelPC</a></h1>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="login.html" aria-label="PixelPC, iniciar sesión">
+        <span class="brand-badge">P</span>
+        <span>PixelPC</span>
+      </a>
 
-    <main>
-        <section class="login-box">
-            <h2>Bienvenido a PixelPC</h2>
-            <p>Inicia sesión para comprar</p>
-            
-            <form action="index.html">
-                <div style="text-align: left;"> 
-                    <label for="correo">Correo Electrónico:</label>
-                    <input type="email" id="correo" placeholder="usuario@correo.com" required>
-                    
-                    <label for="password">Contraseña:</label>
-                    <input type="password" id="password" placeholder="Tu contraseña" required>
-                </div>
-                
-                <button type="submit" class="btn" style="width: 100%;">Ingresar a la Tienda</button>
-            </form>
-        </section>
-    </main>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="login.html" aria-current="page">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2026 PixelPC </p>
-    </footer>
+  <main class="layout">
+    <section class="card">
+      <header>
+        <h2>Bienvenido a PixelPC</h2>
+        <p class="muted">Inicia sesión para comprar.</p>
+      </header>
+
+      <section class="content">
+        <form action="index.html" method="get">
+          <fieldset>
+            <legend>Acceso</legend>
+
+            <section class="form-grid">
+              <label class="field span-2">
+                <span>Correo electrónico</span>
+                <input id="correo" name="correo" type="email" placeholder="usuario@correo.com"
+                       required autocomplete="email">
+              </label>
+
+              <label class="field span-2">
+                <span>Contraseña</span>
+                <input id="password" name="password" type="password" placeholder="Tu contraseña"
+                       required minlength="4" autocomplete="current-password">
+              </label>
+            </section>
+
+            <section class="actions">
+              <button class="btn" type="submit">Ingresar a la tienda</button>
+              <a class="btn secondary" href="contacto.html">¿Problemas para entrar?</a>
+            </section>
+          </fieldset>
+        </form>
+      </section>
+    </section>
+
+    <aside class="card aside" aria-label="Beneficios y avisos">
+      <header>
+        <h3>¿Por qué PixelPC?</h3>
+        <p class="muted">Rápido y seguro</p>
+      </header>
+
+      <section class="content">
+        <ul class="aside-list">
+          <li class="aside-item">
+            <strong>Pago seguro</strong>
+            <small>Protección en tus compras</small>
+            <span class="badge">SSL</span>
+          </li>
+          <li class="aside-item">
+            <strong>Envío rápido</strong>
+            <small>2–5 días hábiles</small>
+            <span class="badge">Express</span>
+          </li>
+          <li class="aside-item">
+            <strong>Soporte</strong>
+            <small>Atención Lun–Vie</small>
+            <span class="badge">Ayuda</span>
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <p class="footer-inner">&copy; 2026 PixelPC</p>
+  </footer>
 
 </body>
 </html>

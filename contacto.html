@@ -1,48 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelPc - Contacto</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelPC - Contacto</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1><a href="index.html">PixelPC</a></h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Tienda</a></li>
-                <li><a href="carrito.html">Mi Carrito</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="login.html">Salir</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="PixelPC, ir a la tienda">
+        <span class="brand-badge">P</span>
+        <span>PixelPC</span>
+      </a>
 
-    <main>
-        <section>
-            <h2>Atención al Cliente</h2>
-            <p>Si tienes dudas sobre tus pedidos o garantías, escríbenos.</p>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Tienda</a></li>
+          <li><a href="carrito.html">Mi Carrito</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+          <li><a href="login.html">Salir</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            <form style="max-width: 500px; margin-top: 20px;">
-                <label for="nombre">Nombre Completo:</label>
-                <input type="text" id="nombre" placeholder="Ej. Panchito Perez" required>
+  <main class="layout">
+    <section class="card">
+      <header>
+        <h2>Atención al cliente</h2>
+        <p class="muted">Si tienes dudas sobre pedidos o garantías, escríbenos.</p>
+      </header>
 
-                <label for="email_contacto">Correo Electrónico:</label>
-                <input type="email" id="email_contacto" placeholder="tu@correo.com" required>
+      <section class="content">
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Formulario de contacto</legend>
 
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" rows="5" placeholder="Escribe tu duda aqui..." required></textarea>
+            <section class="form-grid">
+              <label class="field">
+                <span>Nombre completo</span>
+                <input id="nombre" name="nombre" type="text" placeholder="Ej. Panchito Pérez"
+                       required minlength="3" maxlength="60" autocomplete="name">
+              </label>
 
-                <button type="button" class="btn">Enviar Mensaje</button>
-            </form>
-        </section>
-    </main>
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input id="email" name="email" type="email" placeholder="tu@correo.com"
+                       required autocomplete="email">
+              </label>
 
-    <footer>
-        <p>&copy; 2026 PixelPC </p>
-    </footer>
+              <label class="field">
+                <span>Teléfono (opcional)</span>
+                <input id="telefono" name="telefono" type="tel" placeholder="9511234567"
+                       inputmode="numeric" pattern="[0-9]{10}"
+                       title="Si lo agregas, escribe 10 dígitos">
+              </label>
+
+              <label class="field">
+                <span>Tema</span>
+                <input list="temas" id="tema" name="tema" placeholder="Selecciona un tema" required>
+                <datalist id="temas">
+                  <option value="Pedido"></option>
+                  <option value="Garantía"></option>
+                  <option value="Facturación"></option>
+                  <option value="Devolución"></option>
+                  <option value="Soporte técnico"></option>
+                </datalist>
+              </label>
+
+              <label class="field span-2">
+                <span>Mensaje</span>
+                <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu duda aquí..."
+                          required minlength="10" maxlength="500"></textarea>
+              </label>
+            </section>
+
+            <section class="actions">
+              <button class="btn" type="submit">Enviar mensaje</button>
+              <button class="btn secondary" type="reset">Limpiar</button>
+            </section>
+          </fieldset>
+        </form>
+      </section>
+    </section>
+
+    <aside class="card aside" aria-label="Información de contacto">
+      <header>
+        <h3>Información</h3>
+        <p class="muted">Canales y horarios</p>
+      </header>
+
+      <section class="content">
+        <ul class="aside-list">
+          <li class="aside-item">
+            <strong>Correo</strong>
+            <small>contacto@pixelpc.com</small>
+            <span class="badge">Respuesta &lt; 24h</span>
+          </li>
+
+          <li class="aside-item">
+            <strong>Horario</strong>
+            <small>Lun–Vie: 9:00 a 18:00</small>
+            <span class="badge">Soporte</span>
+          </li>
+
+          <li class="aside-item">
+            <strong>Tip</strong>
+            <small>Incluye tu número de pedido si aplica</small>
+            <span class="badge">Recomendación</span>
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <p class="footer-inner">&copy; 2026 PixelPC</p>
+  </footer>
 
 </body>
 </html>

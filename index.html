@@ -1,86 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelPC - Tienda Semántica</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelPC - Tienda</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1><a href="index.html">PixelPC</a></h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Tienda</a></li>
-                <li><a href="carrito.html">Mi Carrito</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="login.html">Salir</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="PixelPC, ir a la tienda">
+        <span class="brand-badge">P</span>
+        <span>PixelPC</span>
+      </a>
 
-    <main class="layout">
-
-    <div class="contenido-principal">
-
-        <section class="intro">
-            <h2>Catálogo de Equipos Actuallzado</h2>
-            <p>Encuentra tu próxima PC para gaming, desarrollo o diseño.</p>
-        </section>
-
-        <section class="productos-grid">
-            
-            <article class="producto">
-                <img src="imagenes/laptop-thunderobo.jpg" alt="Laptop Thunderobot Gaming">
-                <h3>Laptop Thunderobot</h3>
-                <p>Gráfica RTX 4060, 16GB RAM, 512GB SSD. Ideal para jugar Wuthering Waves y desarrollo pesado.</p>
-                <p class="precio">$19,500 MXN</p>
-                <button class="btn">Agregar al carrito</button>
-            </article>
-
-            <article class="producto">
-                <img src="imagenes/pc-armadaa.jpg" alt="PC de Escritorio Armada">
-                <h3>PC de Escritorio Armada</h3>
-                <p>Procesador Ryzen 5, 16GB RAM, Tarjeta de video RX 6600.</p>
-                <p class="precio">$14,200 MXN</p>
-                <button class="btn">Agregar al carrito</button>
-            </article>
-
-            <article class="producto">
-                <img src="imagenes/monitor-curvoo.jpg" alt="Monitor Curvo 24 pulgadas">
-                <h3>Monitor Curvo 24"</h3>
-                <p>Tasa de refresco de 144Hz, panel VA, 1ms de respuesta.</p>
-                <p class="precio">$3,100 MXN</p>
-                <button class="btn">Agregar al carrito</button>
-            </article>
-
-        </section>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Tienda</a></li>
+          <li><a href="carrito.html">Mi Carrito</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="login.html">Salir</a></li>
+        </ul>
+      </nav>
     </div>
-    <aside class="aside-ventas">
-        <h3> Los Equipos más vendidos de la semana</h3>
+  </header>
 
-        <article class="venta-item">
-            <p><strong>Laptop Thunderobot</strong></p>
-            <span>$19,500 MXN</span>
-        </article>
+  <main class="layout">
+    <section class="card">
+      <header>
+        <h2>Catálogo de equipos actualizado</h2>
+        <p class="muted">Encuentra tu próxima PC para gaming, desarrollo o diseño.</p>
+      </header>
 
-        <article class="venta-item">
-            <p><strong>PC Armada</strong></p>
-            <span>$14,200 MXN</span>
-        </article>
+      <section class="content">
+        <section class="products" aria-label="Productos disponibles">
 
-        <article class="venta-item">
-            <p><strong>Monitor Curvo 24"</strong></p>
-            <span>$3,100 MXN</span>
-        </article>
+          <article class="card product">
+            <figure>
+              <img src="imagenes/laptop-thunderobo.jpg" alt="Laptop Thunderobot Gaming">
+            </figure>
+            <section class="content">
+              <h3>Laptop Thunderobot</h3>
+              <p>RTX 4060, 16GB RAM, 512GB SSD. Ideal para gaming y desarrollo pesado.</p>
+              <p class="price">$19,500 MXN</p>
+              <button class="btn" type="button">Agregar al carrito</button>
+            </section>
+          </article>
 
+          <article class="card product">
+            <figure>
+              <img src="imagenes/pc-armadaa.jpg" alt="PC de escritorio Armada">
+            </figure>
+            <section class="content">
+              <h3>PC de Escritorio Armada</h3>
+              <p>Ryzen 5, 16GB RAM, tarjeta de video RX 6600.</p>
+              <p class="price">$14,200 MXN</p>
+              <button class="btn" type="button">Agregar al carrito</button>
+            </section>
+          </article>
+
+          <article class="card product">
+            <figure>
+              <img src="imagenes/monitor-curvoo.jpg" alt="Monitor curvo de 24 pulgadas">
+            </figure>
+            <section class="content">
+              <h3>Monitor Curvo 24"</h3>
+              <p>144Hz, panel VA, 1ms de respuesta. Fluidez para juegos y trabajo.</p>
+              <p class="price">$3,100 MXN</p>
+              <button class="btn" type="button">Agregar al carrito</button>
+            </section>
+          </article>
+
+        </section>
+      </section>
+    </section>
+
+    <aside class="card aside" aria-label="Sección lateral">
+      <header>
+        <h3>Más vendidos</h3>
+        <p class="muted">Top de la semana</p>
+      </header>
+
+      <section class="content">
+        <ul class="aside-list">
+          <li class="aside-item">
+            <strong>Laptop Thunderobot</strong>
+            <small>$19,500 MXN</small>
+            <span class="badge">Gaming</span>
+          </li>
+          <li class="aside-item">
+            <strong>PC Armada</strong>
+            <small>$14,200 MXN</small>
+            <span class="badge">Rendimiento</span>
+          </li>
+          <li class="aside-item">
+            <strong>Monitor Curvo 24"</strong>
+            <small>$3,100 MXN</small>
+            <span class="badge">144Hz</span>
+          </li>
+        </ul>
+      </section>
     </aside>
-    </main>
+  </main>
 
-    <footer>
-        <p>&copy; 2026 PixelPC </p>
-    </footer>
+  <footer>
+    <p class="footer-inner">&copy; 2026 PixelPC</p>
+  </footer>
 
 </body>
 </html>

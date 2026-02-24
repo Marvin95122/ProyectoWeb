@@ -1,58 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelPc - Mi Carrito</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelPC - Mi Carrito</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1><a href="index.html">PixelPC</a></h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Tienda</a></li>
-                <li><a href="carrito.html">Mi Carrito</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="login.html">Salir</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="PixelPC, ir a la tienda">
+        <span class="brand-badge">P</span>
+        <span>PixelPC</span>
+      </a>
 
-    <main>
-        <section>
-            <h2>Tu Carrito de Compras</h2>
-            
-            <table border="1" width="100%" style="border-collapse: collapse; text-align: left; margin-top: 20px;">
-                <thead>
-                    <tr style="background-color: #eeeeee;">
-                        <th style="padding: 10px;">Producto</th>
-                        <th style="padding: 10px;">Cantidad</th>
-                        <th style="padding: 10px;">Precio Total</th>
-                        <th style="padding: 10px;">Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 10px;">Laptop Thunderobot</td>
-                        <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;">$19,500 MXN</td>
-                        <td style="padding: 10px;"><a href="#" style="color: red;">Eliminar</a></td>
-                    </tr>
-                </tbody>
-            </table>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Tienda</a></li>
+          <li><a href="carrito.html" aria-current="page">Mi Carrito</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="login.html">Salir</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            <div style="text-align: right; margin-top: 20px;">
-                <h3>Total a pagar: $19,500 MXN</h3>
-                <button class="btn" style="background-color: #28a745;">Proceder al Pago</button>
-            </div>
+  <main class="layout">
+    <section class="card">
+      <header>
+        <h2>Tu carrito de compras</h2>
+        <p class="muted">Revisa tus productos antes de proceder al pago.</p>
+      </header>
+
+      <section class="content">
+        <section class="table-wrap" aria-label="Tabla del carrito">
+          <table>
+            <caption>Resumen de productos agregados</caption>
+
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio total</th>
+                <th scope="col">Acción</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="row">Laptop Thunderobot</th>
+                <td>1</td>
+                <td>$19,500 MXN</td>
+                <td><a class="link link-danger" href="#" aria-label="Eliminar Laptop Thunderobot">Eliminar</a></td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="2">Total a pagar</th>
+                <td colspan="2">$19,500 MXN</td>
+              </tr>
+            </tfoot>
+          </table>
         </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 PixelPC </p>
-    </footer>
+        <h3>Datos de envío</h3>
+        <p class="muted">El navegador validará los campos automáticamente.</p>
+
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Información del cliente</legend>
+
+            <section class="form-grid">
+              <label class="field">
+                <span>Nombre completo</span>
+                <input id="nombre" name="nombre" type="text" placeholder="Ej. Panchito Pérez"
+                       required minlength="3" maxlength="60" autocomplete="name">
+              </label>
+
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input id="correo" name="correo" type="email" placeholder="usuario@correo.com"
+                       required autocomplete="email">
+              </label>
+
+              <label class="field">
+                <span>Teléfono (10 dígitos)</span>
+                <input id="telefono" name="telefono" type="tel" placeholder="9511234567"
+                       required inputmode="numeric" pattern="[0-9]{10}"
+                       title="Ingresa 10 dígitos numéricos (ej. 9511234567)" autocomplete="tel">
+              </label>
+
+              <label class="field">
+                <span>Código Postal</span>
+                <input id="cp" name="cp" type="text" placeholder="68000"
+                       required inputmode="numeric" pattern="[0-9]{5}"
+                       title="El código postal debe tener 5 dígitos" autocomplete="postal-code">
+              </label>
+
+              <label class="field">
+                <span>Estado</span>
+                <input list="estados" id="estado" name="estado" placeholder="Selecciona o escribe" required>
+                <datalist id="estados">
+                  <option value="Oaxaca"></option>
+                  <option value="CDMX"></option>
+                  <option value="Puebla"></option>
+                  <option value="Veracruz"></option>
+                  <option value="Jalisco"></option>
+                </datalist>
+              </label>
+
+              <label class="field">
+                <span>Fecha de entrega preferida</span>
+                <input id="entrega" name="entrega" type="date" required>
+              </label>
+
+              <label class="field span-2">
+                <span>Dirección completa</span>
+                <textarea id="direccion" name="direccion" rows="4"
+                          placeholder="Calle, número, colonia, referencias..."
+                          required minlength="10" maxlength="200" autocomplete="street-address"></textarea>
+              </label>
+            </section>
+
+            <section class="actions">
+              <button class="btn success" type="submit">Proceder al pago</button>
+              <button class="btn secondary" type="reset">Limpiar</button>
+            </section>
+
+          </fieldset>
+        </form>
+      </section>
+    </section>
+
+    <aside class="card aside" aria-label="Resumen y ayuda">
+      <header>
+        <h3>Resumen</h3>
+        <p class="muted">Antes de pagar</p>
+      </header>
+
+      <section class="content">
+        <ul class="aside-list">
+          <li class="aside-item">
+            <strong>Total</strong>
+            <small>$19,500 MXN</small>
+            <span class="badge">IVA incluido</span>
+          </li>
+          <li class="aside-item">
+            <strong>Envío</strong>
+            <small>2–5 días hábiles</small>
+            <span class="badge">Nacional</span>
+          </li>
+          <li class="aside-item">
+            <strong>Soporte</strong>
+            <small>contacto@pixelpc.com</small>
+            <span class="badge">24/7</span>
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <p class="footer-inner">&copy; 2026 PixelPC</p>
+  </footer>
 
 </body>
 </html>
