@@ -1,5 +1,5 @@
 /* ===============================
-   PixelPC (HTML5 + CSS3)
+   GymControl (HTML5 + CSS3)
    Estilo sencillo y minimalista
    =============================== */
 
@@ -12,9 +12,9 @@
   --border: #cccccc;
 
   --header: #222221;
-  --primary: #007bff;
-  --primary-hover: #0056b3;
-  --price: #b12704;
+  --primary: #28a745;
+  --primary-hover: #1f7c34;
+  --price: #1f7c34;
   --danger: #d11a2a;
 
   --max: 1000px;
@@ -37,9 +37,7 @@ body{
 a{ color: inherit; }
 
 /* Header */
-.site-header{
-  background-color: var(--header);
-}
+.site-header{ background-color: var(--header); }
 
 .header-inner{
   max-width: var(--max);
@@ -47,7 +45,7 @@ a{ color: inherit; }
   padding: 15px 20px;
   display: flex;
   align-items: center;
-  position: relative; /* para centrar el nav como en tu versión original */
+  position: relative;
 }
 
 .brand{
@@ -124,17 +122,13 @@ main{
 }
 
 .card > header h2,
-.card > header h3{
-  margin: 0;
-}
+.card > header h3{ margin: 0; }
 
-.content{
-  padding: 15px;
-}
+.content{ padding: 15px; }
 
 .muted{ color: var(--muted); }
 
-/* Productos */
+/* “Productos” (planes) */
 .products{
   display: flex;
   flex-wrap: wrap;
@@ -192,6 +186,7 @@ main{
   margin-top: 3px;
 }
 
+/* Badges */
 .badge{
   display: inline-block;
   margin-top: 6px;
@@ -199,6 +194,24 @@ main{
   border: 1px solid #aaaaaa;
   background-color: #eeeeee;
   font-size: 12px;
+}
+
+.badge.ok{
+  border-color: #1f7c34;
+  background-color: #eaf7ee;
+  color: #1f7c34;
+}
+
+.badge.warn{
+  border-color: #b38b00;
+  background-color: #fff8e1;
+  color: #8a6d00;
+}
+
+.badge.danger{
+  border-color: var(--danger);
+  background-color: #fdecee;
+  color: var(--danger);
 }
 
 /* Botones */
@@ -213,25 +226,13 @@ main{
   display: inline-block;
 }
 
-.btn:hover{
-  background-color: var(--primary-hover);
-}
+.btn:hover{ background-color: var(--primary-hover); }
 
-.btn.secondary{
-  background-color: #6c757d;
-}
+.btn.secondary{ background-color: #6c757d; }
+.btn.secondary:hover{ background-color: #545b62; }
 
-.btn.secondary:hover{
-  background-color: #545b62;
-}
-
-.btn.success{
-  background-color: #28a745;
-}
-
-.btn.success:hover{
-  background-color: #1f7c34;
-}
+.btn.success{ background-color: #28a745; }
+.btn.success:hover{ background-color: #1f7c34; }
 
 /* Formularios */
 form{ margin-top: 10px; }
@@ -253,9 +254,7 @@ legend{
   margin-top: 10px;
 }
 
-.field{
-  flex: 1 1 260px;
-}
+.field{ flex: 1 1 260px; }
 
 .field span{
   display: block;
@@ -265,7 +264,7 @@ legend{
 
 .span-2{ flex-basis: 100%; }
 
-input, textarea{
+input, textarea, select{
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -299,9 +298,7 @@ th, td{
   padding: 10px;
 }
 
-thead th{
-  background-color: #eeeeee;
-}
+thead th{ background-color: #eeeeee; }
 
 .link{ color: var(--primary); text-decoration: none; }
 .link:hover{ text-decoration: underline; }

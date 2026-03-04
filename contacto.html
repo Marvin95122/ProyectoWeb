@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelPC - Contacto</title>
+  <title>GymControl - Accesos</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="PixelPC, ir a la tienda">
-        <span class="brand-badge">P</span>
-        <span>PixelPC</span>
+      <a class="brand" href="index.html" aria-label="GymControl, ir al inicio">
+        <span class="brand-badge">G</span>
+        <span>GymControl</span>
       </a>
 
       <nav aria-label="Navegación principal">
         <ul>
-          <li><a href="index.html">Tienda</a></li>
-          <li><a href="carrito.html">Mi Carrito</a></li>
-          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carrito.html">Membresías</a></li>
+          <li><a href="contacto.html" aria-current="page">Accesos</a></li>
           <li><a href="login.html">Salir</a></li>
         </ul>
       </nav>
@@ -29,87 +29,159 @@
   <main class="layout">
     <section class="card">
       <header>
-        <h2>Atención al cliente</h2>
-        <p class="muted">Si tienes dudas sobre pedidos o garantías, escríbenos.</p>
+        <h2>Registro de entrada (check-in)</h2>
+        <p class="muted">Este prototipo valida formato e información. En un sistema real se valida en servidor/BD.</p>
       </header>
 
       <section class="content">
         <form action="#" method="post">
           <fieldset>
-            <legend>Formulario de contacto</legend>
+            <legend>Datos de acceso</legend>
 
             <section class="form-grid">
               <label class="field">
-                <span>Nombre completo</span>
-                <input id="nombre" name="nombre" type="text" placeholder="Ej. Panchito Pérez"
-                       required minlength="3" maxlength="60" autocomplete="name">
+                <span>ID de membresía (GC-0001)</span>
+                <input name="membresia_id" type="text" placeholder="GC-0001"
+                       required pattern="GC-[0-9]{4}"
+                       title="Ejemplo válido: GC-0001">
               </label>
 
               <label class="field">
-                <span>Correo electrónico</span>
-                <input id="email" name="email" type="email" placeholder="tu@correo.com"
-                       required autocomplete="email">
+                <span>Nombre del cliente</span>
+                <input name="nombre" type="text" placeholder="Ej. Panchito Pérez"
+                       required minlength="3" maxlength="60">
               </label>
 
               <label class="field">
-                <span>Teléfono (opcional)</span>
-                <input id="telefono" name="telefono" type="tel" placeholder="9511234567"
-                       inputmode="numeric" pattern="[0-9]{10}"
-                       title="Si lo agregas, escribe 10 dígitos">
+                <span>Tipo de membresía</span>
+                <select name="tipo" required>
+                  <option value="" selected disabled>Selecciona</option>
+                  <option value="Basica">Básica</option>
+                  <option value="Plus">Plus</option>
+                  <option value="Premium">Premium</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Estado de membresía</span>
+                <select name="estado" required>
+                  <option value="Activa">Activa</option>
+                  <option value="Inactiva">Inactiva</option>
+                  <option value="Suspendida">Suspendida</option>
+                </select>
+              </label>
+
+              <label class="field span-2">
+                <span>Confirmación</span>
+                <input type="checkbox" name="confirmo" required>
+                Confirmo que la membresía está activa para permitir el acceso.
+              </label>
+            </section>
+
+            <section class="actions">
+              <button class="btn success" type="submit">Registrar entrada</button>
+              <button class="btn secondary" type="reset">Limpiar</button>
+            </section>
+          </fieldset>
+        </form>
+
+        <section class="table-wrap" aria-label="Registro de accesos">
+          <table>
+            <caption>Entradas de hoy (ejemplo)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Hora</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Membresía</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>07:15</td>
+                <td>Panchito Pérez</td>
+                <td>Plus</td>
+                <td><span class="badge ok">Permitido</span></td>
+              </tr>
+              <tr>
+                <td>08:02</td>
+                <td>María López</td>
+                <td>Básica</td>
+                <td><span class="badge warn">Por revisar</span></td>
+              </tr>
+              <tr>
+                <td>09:10</td>
+                <td>Luis Hernández</td>
+                <td>Premium</td>
+                <td><span class="badge danger">Denegado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <h3>Soporte</h3>
+        <p class="muted">Si hay problemas con el acceso, envía un mensaje.</p>
+
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Contacto</legend>
+
+            <section class="form-grid">
+              <label class="field">
+                <span>Correo</span>
+                <input name="email" type="email" placeholder="tu@correo.com" required>
               </label>
 
               <label class="field">
                 <span>Tema</span>
-                <input list="temas" id="tema" name="tema" placeholder="Selecciona un tema" required>
+                <input list="temas" name="tema" placeholder="Selecciona un tema" required>
                 <datalist id="temas">
-                  <option value="Pedido"></option>
-                  <option value="Garantía"></option>
-                  <option value="Facturación"></option>
-                  <option value="Devolución"></option>
+                  <option value="Accesos"></option>
+                  <option value="Membresías"></option>
+                  <option value="Pagos"></option>
                   <option value="Soporte técnico"></option>
                 </datalist>
               </label>
 
               <label class="field span-2">
                 <span>Mensaje</span>
-                <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu duda aquí..."
-                          required minlength="10" maxlength="500"></textarea>
+                <textarea name="mensaje" rows="5" required minlength="10" maxlength="500"
+                          placeholder="Describe el problema..."></textarea>
               </label>
             </section>
 
             <section class="actions">
-              <button class="btn" type="submit">Enviar mensaje</button>
+              <button class="btn" type="submit">Enviar</button>
               <button class="btn secondary" type="reset">Limpiar</button>
             </section>
           </fieldset>
         </form>
+
       </section>
     </section>
 
-    <aside class="card aside" aria-label="Información de contacto">
+    <aside class="card aside" aria-label="Reglas y recomendaciones">
       <header>
-        <h3>Información</h3>
-        <p class="muted">Canales y horarios</p>
+        <h3>Reglas de acceso</h3>
+        <p class="muted">Para permitir entrada</p>
       </header>
 
       <section class="content">
         <ul class="aside-list">
           <li class="aside-item">
-            <strong>Correo</strong>
-            <small>contacto@pixelpc.com</small>
-            <span class="badge">Respuesta &lt; 24h</span>
+            <strong>Membresía activa</strong>
+            <small>Debe estar vigente</small>
+            <span class="badge ok">Obligatorio</span>
           </li>
-
           <li class="aside-item">
-            <strong>Horario</strong>
-            <small>Lun–Vie: 9:00 a 18:00</small>
-            <span class="badge">Soporte</span>
+            <strong>Identificación</strong>
+            <small>Verificar nombre/ID</small>
+            <span class="badge">Control</span>
           </li>
-
           <li class="aside-item">
-            <strong>Tip</strong>
-            <small>Incluye tu número de pedido si aplica</small>
-            <span class="badge">Recomendación</span>
+            <strong>Soporte</strong>
+            <small>soporte@gymcontrol.com</small>
+            <span class="badge">Ayuda</span>
           </li>
         </ul>
       </section>
@@ -117,7 +189,7 @@
   </main>
 
   <footer>
-    <p class="footer-inner">&copy; 2026 PixelPC</p>
+    <p class="footer-inner">&copy; 2026 GymControl</p>
   </footer>
 
 </body>

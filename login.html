@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelPC - Iniciar Sesión</title>
+  <title>GymControl - Iniciar Sesión</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="login.html" aria-label="PixelPC, iniciar sesión">
-        <span class="brand-badge">P</span>
-        <span>PixelPC</span>
+      <a class="brand" href="login.html" aria-label="GymControl, iniciar sesión">
+        <span class="brand-badge">G</span>
+        <span>GymControl</span>
       </a>
 
       <nav aria-label="Navegación principal">
@@ -26,32 +26,32 @@
   <main class="layout">
     <section class="card">
       <header>
-        <h2>Bienvenido a PixelPC</h2>
-        <p class="muted">Inicia sesión para comprar.</p>
+        <h2>Acceso del personal</h2>
+        <p class="muted">Inicia sesión para administrar clientes, membresías y accesos.</p>
       </header>
 
       <section class="content">
         <form action="index.html" method="get">
           <fieldset>
-            <legend>Acceso</legend>
+            <legend>Credenciales</legend>
 
             <section class="form-grid">
               <label class="field span-2">
-                <span>Correo electrónico</span>
-                <input id="correo" name="correo" type="email" placeholder="usuario@correo.com"
+                <span>Correo</span>
+                <input name="correo" type="email" placeholder="admin@gymcontrol.com"
                        required autocomplete="email">
               </label>
 
               <label class="field span-2">
                 <span>Contraseña</span>
-                <input id="password" name="password" type="password" placeholder="Tu contraseña"
+                <input name="password" type="password" placeholder="Tu contraseña"
                        required minlength="4" autocomplete="current-password">
               </label>
             </section>
 
             <section class="actions">
-              <button class="btn" type="submit">Ingresar a la tienda</button>
-              <a class="btn secondary" href="contacto.html">¿Problemas para entrar?</a>
+              <button class="btn" type="submit">Ingresar</button>
+              <a class="btn secondary" href="contacto.html">Soporte</a>
             </section>
           </fieldset>
         </form>
@@ -60,26 +60,26 @@
 
     <aside class="card aside" aria-label="Beneficios y avisos">
       <header>
-        <h3>¿Por qué PixelPC?</h3>
-        <p class="muted">Rápido y seguro</p>
+        <h3>¿Qué controla el sistema?</h3>
+        <p class="muted">Versión prototipo</p>
       </header>
 
       <section class="content">
         <ul class="aside-list">
           <li class="aside-item">
-            <strong>Pago seguro</strong>
-            <small>Protección en tus compras</small>
-            <span class="badge">SSL</span>
+            <strong>Membresías</strong>
+            <small>Altas, renovaciones y estado</small>
+            <span class="badge ok">Control</span>
           </li>
           <li class="aside-item">
-            <strong>Envío rápido</strong>
-            <small>2–5 días hábiles</small>
-            <span class="badge">Express</span>
+            <strong>Accesos</strong>
+            <small>Registro de entrada</small>
+            <span class="badge">Check-in</span>
           </li>
           <li class="aside-item">
-            <strong>Soporte</strong>
-            <small>Atención Lun–Vie</small>
-            <span class="badge">Ayuda</span>
+            <strong>Validación</strong>
+            <small>Formato y datos (demo)</small>
+            <span class="badge warn">Prototipo</span>
           </li>
         </ul>
       </section>
@@ -87,7 +87,7 @@
   </main>
 
   <footer>
-    <p class="footer-inner">&copy; 2026 PixelPC</p>
+    <p class="footer-inner">&copy; 2026 GymControl</p>
   </footer>
 
 </body>

@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelPC - Mi Carrito</title>
+  <title>GymControl - Membresías</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="PixelPC, ir a la tienda">
-        <span class="brand-badge">P</span>
-        <span>PixelPC</span>
+      <a class="brand" href="index.html" aria-label="GymControl, ir al inicio">
+        <span class="brand-badge">G</span>
+        <span>GymControl</span>
       </a>
 
       <nav aria-label="Navegación principal">
         <ul>
-          <li><a href="index.html">Tienda</a></li>
-          <li><a href="carrito.html" aria-current="page">Mi Carrito</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carrito.html" aria-current="page">Membresías</a></li>
+          <li><a href="contacto.html">Accesos</a></li>
           <li><a href="login.html">Salir</a></li>
         </ul>
       </nav>
@@ -29,133 +29,161 @@
   <main class="layout">
     <section class="card">
       <header>
-        <h2>Tu carrito de compras</h2>
-        <p class="muted">Revisa tus productos antes de proceder al pago.</p>
+        <h2>Membresías y clientes</h2>
+        <p class="muted">Aquí se registran clientes y se asigna su tipo de membresía (prototipo).</p>
       </header>
 
       <section class="content">
-        <section class="table-wrap" aria-label="Tabla del carrito">
+
+        <section class="table-wrap" aria-label="Tabla de clientes y membresías">
           <table>
-            <caption>Resumen de productos agregados</caption>
+            <caption>Clientes registrados (ejemplo)</caption>
 
             <thead>
               <tr>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio total</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Membresía</th>
+                <th scope="col">Vigencia</th>
+                <th scope="col">Estado</th>
                 <th scope="col">Acción</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <th scope="row">Laptop Thunderobot</th>
-                <td>1</td>
-                <td>$19,500 MXN</td>
-                <td><a class="link link-danger" href="#" aria-label="Eliminar Laptop Thunderobot">Eliminar</a></td>
+                <th scope="row">Panchito Pérez</th>
+                <td>Plus</td>
+                <td>Hasta 2026-03-20</td>
+                <td><span class="badge ok">Activa</span></td>
+                <td><a class="link link-danger" href="#" aria-label="Dar de baja">Baja</a></td>
+              </tr>
+              <tr>
+                <th scope="row">María López</th>
+                <td>Básica</td>
+                <td>Hasta 2026-02-25</td>
+                <td><span class="badge warn">Por vencer</span></td>
+                <td><a class="link" href="#" aria-label="Renovar">Renovar</a></td>
+              </tr>
+              <tr>
+                <th scope="row">Luis Hernández</th>
+                <td>Premium</td>
+                <td>Vencida</td>
+                <td><span class="badge danger">Inactiva</span></td>
+                <td><a class="link" href="#" aria-label="Reactivar">Reactivar</a></td>
               </tr>
             </tbody>
-
-            <tfoot>
-              <tr>
-                <th scope="row" colspan="2">Total a pagar</th>
-                <td colspan="2">$19,500 MXN</td>
-              </tr>
-            </tfoot>
           </table>
         </section>
 
-        <h3>Datos de envío</h3>
-        <p class="muted">El navegador validará los campos automáticamente.</p>
+        <h3 id="registro">Registrar nuevo cliente</h3>
+        <p class="muted">Validación básica con HTML5 (en un sistema real se valida con base de datos).</p>
 
         <form action="#" method="post">
           <fieldset>
-            <legend>Información del cliente</legend>
+            <legend>Datos del cliente</legend>
 
             <section class="form-grid">
               <label class="field">
                 <span>Nombre completo</span>
-                <input id="nombre" name="nombre" type="text" placeholder="Ej. Panchito Pérez"
+                <input name="nombre" type="text" placeholder="Ej. Panchito Pérez"
                        required minlength="3" maxlength="60" autocomplete="name">
               </label>
 
               <label class="field">
-                <span>Correo electrónico</span>
-                <input id="correo" name="correo" type="email" placeholder="usuario@correo.com"
+                <span>Correo</span>
+                <input name="correo" type="email" placeholder="usuario@correo.com"
                        required autocomplete="email">
               </label>
 
               <label class="field">
                 <span>Teléfono (10 dígitos)</span>
-                <input id="telefono" name="telefono" type="tel" placeholder="9511234567"
+                <input name="telefono" type="tel" placeholder="9511234567"
                        required inputmode="numeric" pattern="[0-9]{10}"
-                       title="Ingresa 10 dígitos numéricos (ej. 9511234567)" autocomplete="tel">
+                       title="Ingresa 10 dígitos numéricos" autocomplete="tel">
               </label>
 
               <label class="field">
-                <span>Código Postal</span>
-                <input id="cp" name="cp" type="text" placeholder="68000"
-                       required inputmode="numeric" pattern="[0-9]{5}"
-                       title="El código postal debe tener 5 dígitos" autocomplete="postal-code">
+                <span>ID de membresía (formato GC-0001)</span>
+                <input name="membresia_id" type="text" placeholder="GC-0001"
+                       required pattern="GC-[0-9]{4}"
+                       title="Ejemplo válido: GC-0001">
+              </label>
+
+              <label class="field">
+                <span>Tipo de membresía</span>
+                <select name="tipo" required>
+                  <option value="" selected disabled>Selecciona</option>
+                  <option value="Basica">Básica</option>
+                  <option value="Plus">Plus</option>
+                  <option value="Premium">Premium</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Fecha de inicio</span>
+                <input name="inicio" type="date" required>
+              </label>
+
+              <label class="field">
+                <span>Vigencia</span>
+                <select name="vigencia" required>
+                  <option value="" selected disabled>Selecciona</option>
+                  <option value="1">1 mes</option>
+                  <option value="3">3 meses</option>
+                  <option value="6">6 meses</option>
+                  <option value="12">12 meses</option>
+                </select>
               </label>
 
               <label class="field">
                 <span>Estado</span>
-                <input list="estados" id="estado" name="estado" placeholder="Selecciona o escribe" required>
-                <datalist id="estados">
-                  <option value="Oaxaca"></option>
-                  <option value="CDMX"></option>
-                  <option value="Puebla"></option>
-                  <option value="Veracruz"></option>
-                  <option value="Jalisco"></option>
-                </datalist>
-              </label>
-
-              <label class="field">
-                <span>Fecha de entrega preferida</span>
-                <input id="entrega" name="entrega" type="date" required>
+                <select name="estado" required>
+                  <option value="Activa">Activa</option>
+                  <option value="Inactiva">Inactiva</option>
+                  <option value="Suspendida">Suspendida</option>
+                </select>
               </label>
 
               <label class="field span-2">
-                <span>Dirección completa</span>
-                <textarea id="direccion" name="direccion" rows="4"
-                          placeholder="Calle, número, colonia, referencias..."
-                          required minlength="10" maxlength="200" autocomplete="street-address"></textarea>
+                <span>Observaciones (opcional)</span>
+                <textarea name="observaciones" rows="4"
+                          placeholder="Ej. Requiere acceso a clases, pago en efectivo..."
+                          maxlength="200"></textarea>
               </label>
             </section>
 
             <section class="actions">
-              <button class="btn success" type="submit">Proceder al pago</button>
+              <button class="btn success" type="submit">Registrar</button>
               <button class="btn secondary" type="reset">Limpiar</button>
             </section>
-
           </fieldset>
         </form>
+
       </section>
     </section>
 
-    <aside class="card aside" aria-label="Resumen y ayuda">
+    <aside class="card aside" aria-label="Beneficios por membresía">
       <header>
-        <h3>Resumen</h3>
-        <p class="muted">Antes de pagar</p>
+        <h3>Beneficios</h3>
+        <p class="muted">Por tipo de plan</p>
       </header>
 
       <section class="content">
         <ul class="aside-list">
           <li class="aside-item">
-            <strong>Total</strong>
-            <small>$19,500 MXN</small>
-            <span class="badge">IVA incluido</span>
+            <strong>Básica</strong>
+            <small>Pesas + cardio</small>
+            <span class="badge">Acceso</span>
           </li>
           <li class="aside-item">
-            <strong>Envío</strong>
-            <small>2–5 días hábiles</small>
-            <span class="badge">Nacional</span>
+            <strong>Plus</strong>
+            <small>Clases grupales</small>
+            <span class="badge ok">Popular</span>
           </li>
           <li class="aside-item">
-            <strong>Soporte</strong>
-            <small>contacto@pixelpc.com</small>
-            <span class="badge">24/7</span>
+            <strong>Premium</strong>
+            <small>Asesoría (demo)</small>
+            <span class="badge warn">VIP</span>
           </li>
         </ul>
       </section>
@@ -163,7 +191,7 @@
   </main>
 
   <footer>
-    <p class="footer-inner">&copy; 2026 PixelPC</p>
+    <p class="footer-inner">&copy; 2026 GymControl</p>
   </footer>
 
 </body>
