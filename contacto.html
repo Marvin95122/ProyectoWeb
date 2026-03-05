@@ -4,193 +4,203 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GymControl - Accesos</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light d-flex flex-column min-vh-100">
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html" aria-label="GymControl, ir al inicio">
-        <span class="brand-badge">G</span>
-        <span>GymControl</span>
-      </a>
-
-      <nav aria-label="Navegación principal">
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="carrito.html">Membresías</a></li>
-          <li><a href="contacto.html" aria-current="page">Accesos</a></li>
-          <li><a href="login.html">Salir</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+          <span class="badge bg-success me-2 fs-5">G</span>
+          GymControl
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNavegacion">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="carrito.html">Membresías</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contacto.html">Accesos</a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html">Salir</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <main class="layout">
-    <section class="card">
-      <header>
-        <h2>Registro de entrada (check-in)</h2>
-        <p class="muted">Este prototipo valida formato e información.</p>
-      </header>
+  <main class="container my-4 flex-grow-1">
+    <div class="row g-4">
+      
+      <section class="col-lg-8">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-white">
+            <h2 class="h4 mb-0 mt-2">Registro de entrada (Check-in)</h2>
+            <p class="text-muted small mb-0">Este prototipo valida formato e información de acceso.</p>
+          </div>
+          
+          <div class="card-body">
+            
+            <form action="#" method="post" class="mb-5 bg-light p-3 border rounded">
+              <h3 class="h6 text-uppercase fw-bold text-muted mb-3">Datos de acceso</h3>
+              <div class="row g-3">
+                
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">ID (GC-0001)</label>
+                  <input name="membresia_id" type="text" class="form-control" placeholder="GC-0001" required pattern="GC-[0-9]{4}">
+                </div>
 
-      <section class="content">
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Datos de acceso</legend>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Nombre del cliente</label>
+                  <input name="nombre" type="text" class="form-control" placeholder="Ej. Panchito Pérez" required minlength="3">
+                </div>
 
-            <section class="form-grid">
-              <label class="field">
-                <span>ID de membresía (GC-0001)</span>
-                <input name="membresia_id" type="text" placeholder="GC-0001"
-                       required pattern="GC-[0-9]{4}"
-                       title="Ejemplo válido: GC-0001">
-              </label>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Tipo de membresía</label>
+                  <select name="tipo" class="form-select" required>
+                    <option value="" selected disabled>Selecciona</option>
+                    <option value="Basica">Básica</option>
+                    <option value="Plus">Plus</option>
+                    <option value="Premium">Premium</option>
+                  </select>
+                </div>
 
-              <label class="field">
-                <span>Nombre del cliente</span>
-                <input name="nombre" type="text" placeholder="Ej. Panchito Pérez"
-                       required minlength="3" maxlength="60">
-              </label>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Estado</label>
+                  <select name="estado" class="form-select" required>
+                    <option value="Activa">Activa</option>
+                    <option value="Inactiva">Inactiva</option>
+                    <option value="Suspendida">Suspendida</option>
+                  </select>
+                </div>
 
-              <label class="field">
-                <span>Tipo de membresía</span>
-                <select name="tipo" required>
-                  <option value="" selected disabled>Selecciona</option>
-                  <option value="Basica">Básica</option>
-                  <option value="Plus">Plus</option>
-                  <option value="Premium">Premium</option>
-                </select>
-              </label>
+                <div class="col-12 mt-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="confirmo" id="confirmo" required>
+                    <label class="form-check-label" for="confirmo">
+                      Confirmo que la membresía está activa para permitir el acceso.
+                    </label>
+                  </div>
+                </div>
 
-              <label class="field">
-                <span>Estado de membresía</span>
-                <select name="estado" required>
-                  <option value="Activa">Activa</option>
-                  <option value="Inactiva">Inactiva</option>
-                  <option value="Suspendida">Suspendida</option>
-                </select>
-              </label>
+              </div>
 
-              <label class="field span-2">
-                <span>Confirmación</span>
-                <input type="checkbox" name="confirmo" required>
-                Confirmo que la membresía está activa para permitir el acceso.
-              </label>
-            </section>
+              <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="reset" class="btn btn-secondary">Limpiar</button>
+                <button type="submit" class="btn btn-success">Registrar entrada</button>
+              </div>
+            </form>
 
-            <section class="actions">
-              <button class="btn success" type="submit">Registrar entrada</button>
-              <button class="btn secondary" type="reset">Limpiar</button>
-            </section>
-          </fieldset>
-        </form>
+            <h3 class="h5 border-bottom pb-2">Entradas de hoy</h3>
+            <div class="table-responsive mb-5">
+              <table class="table table-bordered table-sm align-middle text-center">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Membresía</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>07:15</td>
+                    <td class="text-start">Panchito Pérez</td>
+                    <td>Plus</td>
+                    <td><span class="badge bg-success">Permitido</span></td>
+                  </tr>
+                  <tr>
+                    <td>08:02</td>
+                    <td class="text-start">María López</td>
+                    <td>Básica</td>
+                    <td><span class="badge bg-warning text-dark">Por revisar</span></td>
+                  </tr>
+                  <tr>
+                    <td>09:10</td>
+                    <td class="text-start">Luis Hernández</td>
+                    <td>Premium</td>
+                    <td><span class="badge bg-danger">Denegado</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-        <section class="table-wrap" aria-label="Registro de accesos">
-          <table>
-            <caption>Entradas de hoy (ejemplo)</caption>
-            <thead>
-              <tr>
-                <th scope="col">Hora</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Membresía</th>
-                <th scope="col">Estado</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>07:15</td>
-                <td>Panchito Pérez</td>
-                <td>Plus</td>
-                <td><span class="badge ok">Permitido</span></td>
-              </tr>
-              <tr>
-                <td>08:02</td>
-                <td>María López</td>
-                <td>Básica</td>
-                <td><span class="badge warn">Por revisar</span></td>
-              </tr>
-              <tr>
-                <td>09:10</td>
-                <td>Luis Hernández</td>
-                <td>Premium</td>
-                <td><span class="badge danger">Denegado</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+            <div class="mt-5 p-4 border rounded bg-white shadow-sm">
+              <h3 class="h5">Soporte técnico</h3>
+              <p class="text-muted small">Si hay problemas con el acceso, envía un mensaje.</p>
+              
+              <form action="#" method="post">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Correo</label>
+                    <input name="email" type="email" class="form-control" placeholder="tu@correo.com" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-bold">Tema</label>
+                    <input list="temas" name="tema" class="form-control" placeholder="Selecciona un tema" required>
+                    <datalist id="temas">
+                      <option value="Accesos"></option>
+                      <option value="Membresías"></option>
+                      <option value="Soporte técnico"></option>
+                    </datalist>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label fw-bold">Mensaje</label>
+                    <textarea name="mensaje" class="form-control" rows="3" required placeholder="Describe el problema..."></textarea>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                </div>
+              </form>
+            </div>
 
-        <h3>Soporte</h3>
-        <p class="muted">Si hay problemas con el acceso, envía un mensaje.</p>
-
-        <form action="#" method="post">
-          <fieldset>
-            <legend>Contacto</legend>
-
-            <section class="form-grid">
-              <label class="field">
-                <span>Correo</span>
-                <input name="email" type="email" placeholder="tu@correo.com" required>
-              </label>
-
-              <label class="field">
-                <span>Tema</span>
-                <input list="temas" name="tema" placeholder="Selecciona un tema" required>
-                <datalist id="temas">
-                  <option value="Accesos"></option>
-                  <option value="Membresías"></option>
-                  <option value="Pagos"></option>
-                  <option value="Soporte técnico"></option>
-                </datalist>
-              </label>
-
-              <label class="field span-2">
-                <span>Mensaje</span>
-                <textarea name="mensaje" rows="5" required minlength="10" maxlength="500"
-                          placeholder="Describe el problema..."></textarea>
-              </label>
-            </section>
-
-            <section class="actions">
-              <button class="btn" type="submit">Enviar</button>
-              <button class="btn secondary" type="reset">Limpiar</button>
-            </section>
-          </fieldset>
-        </form>
-
+          </div>
+        </div>
       </section>
-    </section>
 
-    <aside class="card aside" aria-label="Reglas y recomendaciones">
-      <header>
-        <h3>Reglas de acceso</h3>
-        <p class="muted">Para permitir entrada</p>
-      </header>
+      <aside class="col-lg-4">
+        <div class="card shadow-sm border-0 bg-white">
+          <div class="card-body">
+            <h3 class="h5 border-bottom pb-2">Reglas de acceso</h3>
+            <p class="text-muted small">Para permitir entrada</p>
+            
+            <ul class="list-unstyled mt-3">
+              <li class="mb-3 d-flex justify-content-between align-items-start">
+                <div>
+                  <strong class="d-block text-dark">Membresía activa</strong>
+                  <small class="text-muted">Debe estar vigente</small>
+                </div>
+                <span class="badge bg-success">Obligatorio</span>
+              </li>
+              <li class="mb-3 d-flex justify-content-between align-items-start">
+                <div>
+                  <strong class="d-block text-dark">Identificación</strong>
+                  <small class="text-muted">Verificar nombre/ID</small>
+                </div>
+                <span class="badge bg-secondary">Control</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-start">
+                <div>
+                  <strong class="d-block text-dark">Soporte</strong>
+                  <small class="text-muted text-break">soporte@gymcontrol.com</small>
+                </div>
+                <span class="badge bg-info text-dark">Ayuda</span>
+              </li>
+            </ul>
 
-      <section class="content">
-        <ul class="aside-list">
-          <li class="aside-item">
-            <strong>Membresía activa</strong>
-            <small>Debe estar vigente</small>
-            <span class="badge ok">Obligatorio</span>
-          </li>
-          <li class="aside-item">
-            <strong>Identificación</strong>
-            <small>Verificar nombre/ID</small>
-            <span class="badge">Control</span>
-          </li>
-          <li class="aside-item">
-            <strong>Soporte</strong>
-            <small>soporte@gymcontrol.com</small>
-            <span class="badge">Ayuda</span>
-          </li>
-        </ul>
-      </section>
-    </aside>
+          </div>
+        </div>
+      </aside>
+
+    </div>
   </main>
 
-  <footer>
-    <p class="footer-inner">&copy; 2026 GymControl</p>
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p class="mb-0 small">&copy; 2026 GymControl</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
