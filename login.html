@@ -7,91 +7,55 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
+<div id="app" class="d-flex flex-column min-vh-100">
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="login.html">
-          <span class="badge bg-success me-2 fs-5">G</span>
-          GymControl
+          <span class="badge bg-success me-2 fs-5">G</span> GymControl
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menuNavegacion">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
-          </ul>
-        </div>
       </div>
     </nav>
   </header>
 
   <main class="container my-5 flex-grow-1">
     <div class="row justify-content-center g-4">
-      
-      <section class="col-md-6">
-        <div class="card shadow-sm">
-          <div class="card-header bg-white">
-            <h2 class="h4 mb-0 mt-2">Acceso del personal</h2>
-            <p class="text-muted small mb-0">Inicia sesión para administrar clientes, membresías y accesos.</p>
+      <section class="col-md-5">
+        <div class="card shadow-sm border-0">
+          <div class="card-header bg-white text-center py-3">
+            <h2 class="h4 mb-0 fw-bold">Acceso del personal</h2>
+            <p class="text-muted small mb-0">Ingresa tus credenciales</p>
           </div>
-          <div class="card-body">
+          <div class="card-body p-4">
             
-            <form action="index.html" method="get">
+            <form @submit.prevent="iniciarSesion">
+              
+              <div v-if="error" class="alert alert-danger py-2 small" role="alert">
+                Correo o contraseña incorrectos.
+              </div>
+
               <div class="mb-3">
-                <label for="correo" class="form-label fw-bold">Correo</label>
-                <input id="correo" name="correo" type="email" class="form-control" placeholder="admin@gymcontrol.com" required autocomplete="email">
+                <label class="form-label fw-bold">Correo</label>
+                <input v-model="usuario.correo" type="email" class="form-control" required>
               </div>
 
               <div class="mb-4">
-                <label for="password" class="form-label fw-bold">Contraseña</label>
-                <input id="password" name="password" type="password" class="form-control" placeholder="Tu contraseña" required minlength="4" autocomplete="current-password">
+                <label class="form-label fw-bold">Contraseña</label>
+                <input v-model="usuario.password" type="password" class="form-control" required>
               </div>
 
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="contacto.html" class="btn btn-secondary">Soporte</a>
-                <button type="submit" class="btn btn-success">Ingresar</button>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-lg" :disabled="cargando">
+                  <span v-if="cargando" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  {{ cargando ? 'Verificando...' : 'Ingresar al sistema' }}
+                </button>
               </div>
             </form>
 
           </div>
         </div>
       </section>
-
-      <aside class="col-md-4">
-        <div class="card shadow-sm border-0 bg-white">
-          <div class="card-body">
-            <h3 class="h5 border-bottom pb-2">¿Qué controla el sistema?</h3>
-            
-            <ul class="list-unstyled mt-3">
-              <li class="mb-3 d-flex justify-content-between align-items-start">
-                <div>
-                  <strong class="d-block text-dark">Membresías</strong>
-                  <small class="text-muted">Altas, renovaciones y estado</small>
-                </div>
-                <span class="badge bg-success">Control</span>
-              </li>
-              <li class="mb-3 d-flex justify-content-between align-items-start">
-                <div>
-                  <strong class="d-block text-dark">Accesos</strong>
-                  <small class="text-muted">Registro de entrada</small>
-                </div>
-                <span class="badge bg-secondary">Check-in</span>
-              </li>
-              <li class="d-flex justify-content-between align-items-start">
-                <div>
-                  <strong class="d-block text-dark">Validación</strong>
-                  <small class="text-muted">Formato y datos (demo)</small>
-                </div>
-                <span class="badge bg-warning text-dark">Prototipo</span>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-      </aside>
-
     </div>
   </main>
 
@@ -99,6 +63,32 @@
     <p class="mb-0 small">&copy; 2026 GymControl</p>
   </footer>
 
+</div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          usuario: { correo: '', password: '' },
+          cargando: false,
+          error: false
+        }
+      },
+      methods: {
+        iniciarSesion() {
+          this.cargando = true;
+          this.error = false;
+          // Simulamos una carga
+          setTimeout(() => {
+            this.cargando = false;
+            window.location.href = 'index.html';
+          }, 500);
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>

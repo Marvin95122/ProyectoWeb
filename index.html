@@ -5,23 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GymControl - Inicio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Efecto de animación flotante */
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-5px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important; }
+  </style>
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
+<div id="app" class="d-flex flex-column min-vh-100">
 
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-          <span class="badge bg-success me-2 fs-5">G</span>
-          GymControl
+          <span class="badge bg-success me-2 fs-5">G</span> GymControl
         </a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="menuNavegacion">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav mx-auto">
             <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="carrito.html">Membresías</a></li>
             <li class="nav-item"><a class="nav-link" href="contacto.html">Accesos</a></li>
@@ -34,77 +37,39 @@
 
   <main class="container my-4 flex-grow-1">
     <div class="row g-4">
-      
       <section class="col-lg-8">
         <div class="card shadow-sm mb-4">
           <div class="card-header bg-white">
             <h2 class="h4 mb-0 mt-2">Panel del gimnasio</h2>
-            <p class="text-muted small mb-1">Control de membresías, registro de clientes y acceso (check-in).</p>
+            <p class="text-muted small mb-1">Bienvenido. Aquí tienes el control de tu negocio.</p>
           </div>
-
           <div class="card-body bg-light">
+            
             <div class="card mb-4 shadow-sm">
-              <div class="card-header">
-                <h3 class="h6 mb-0">Resumen rápido</h3>
-              </div>
+              <div class="card-header bg-white"><h3 class="h6 mb-0">Resumen de hoy</h3></div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <strong>Membresías activas</strong> <br>
-                    <small class="text-success fw-bold">48</small>
-                  </div>
+                  <div><strong>Membresías activas</strong> <br><small class="text-success fw-bold">{{ estadisticas.activas }}</small></div>
                   <span class="badge bg-success rounded-pill">Activas</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <strong>Vencen esta semana</strong> <br>
-                    <small class="text-warning fw-bold">7</small>
-                  </div>
+                  <div><strong>Vencen esta semana</strong> <br><small class="text-warning fw-bold">{{ estadisticas.vencen }}</small></div>
                   <span class="badge bg-warning text-dark rounded-pill">Revisar</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <strong>Entradas hoy</strong> <br>
-                    <small class="text-success fw-bold">21</small>
-                  </div>
-                  <span class="badge bg-success rounded-pill">Check-in</span>
                 </li>
               </ul>
             </div>
 
             <div class="row g-3">
-              <article class="col-md-4">
-                <div class="card h-100 shadow-sm text-center">
-                  <img src="imagenes/pesasocardio.jpg" class="card-img-top" alt="Zona de entrenamiento" style="height: 150px; object-fit: cover;">
+              <article class="col-md-4" v-for="plan in planes" :key="plan.nombre">
+                <div class="card h-100 shadow-sm text-center card-hover" :class="{'border-warning': plan.vip}">
+                  <img :src="plan.img" class="card-img-top" :alt="plan.nombre" style="height: 150px; object-fit: cover; background:#ddd;">
                   <div class="card-body d-flex flex-column">
-                    <h3 class="h6 fw-bold">Básica</h3>
-                    <p class="small text-muted flex-grow-1">Acceso a pesas y cardio. Horario general.</p>
-                    <p class="h5 text-success">$399 MXN</p>
-                    <a href="carrito.html#registro" class="btn btn-outline-success btn-sm mt-auto">Registrar</a>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4">
-                <div class="card h-100 shadow-sm text-center">
-                  <img src="imagenes/clase-colectiva.jpg" class="card-img-top" alt="Clases grupales" style="height: 150px; object-fit: cover;">
-                  <div class="card-body d-flex flex-column">
-                    <h3 class="h6 fw-bold">Plus</h3>
-                    <p class="small text-muted flex-grow-1">Incluye clases grupales y rutinas.</p>
-                    <p class="h5 text-success">$599 MXN</p>
-                    <a href="carrito.html#registro" class="btn btn-outline-success btn-sm mt-auto">Registrar</a>
-                  </div>
-                </div>
-              </article>
-
-              <article class="col-md-4">
-                <div class="card h-100 shadow-sm text-center border-warning">
-                  <img src="imagenes/entrenador.jpg" class="card-img-top" alt="Entrenamiento premium" style="height: 150px; object-fit: cover;">
-                  <div class="card-body d-flex flex-column">
-                    <h3 class="h6 fw-bold">Premium</h3>
-                    <p class="small text-muted flex-grow-1">Clases + 1 asesoría semanal.</p>
-                    <p class="h5 text-success">$899 MXN</p>
-                    <a href="carrito.html#registro" class="btn btn-warning btn-sm mt-auto text-dark">Registrar VIP</a>
+                    <h3 class="h6 fw-bold">{{ plan.nombre }}</h3>
+                    <p class="small text-muted flex-grow-1">{{ plan.desc }}</p>
+                    <p class="h5 text-success">${{ plan.precio }} MXN</p>
+                    
+                    <button v-if="plan.vip" class="btn btn-warning btn-sm mt-auto text-dark" data-bs-toggle="modal" data-bs-target="#modalVIP">Ver VIP</button>
+                    <a v-else href="carrito.html#registro" class="btn btn-outline-success btn-sm mt-auto">Registrar</a>
                   </div>
                 </div>
               </article>
@@ -117,39 +82,62 @@
       <aside class="col-lg-4">
         <div class="card shadow-sm mb-4">
           <div class="card-header bg-white">
-            <h3 class="h5 mb-0 mt-1">Más elegidas</h3>
-            <p class="text-muted small mb-0">Top de la semana</p>
+            <h3 class="h5 mb-0 mt-1">Accesos rápidos</h3>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <strong>Plus</strong><br><small class="text-muted">Clases + rutinas</small>
-              </div>
-              <span class="badge bg-success">Popular</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <strong>Básica</strong><br><small class="text-muted">Pesas + cardio</small>
-              </div>
-              <span class="badge bg-secondary">Acceso</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              <div>
-                <strong>Premium</strong><br><small class="text-muted">Asesoría semanal</small>
-              </div>
-              <span class="badge bg-warning text-dark">VIP</span>
-            </li>
-          </ul>
+          <div class="card-body">
+            <div class="d-grid gap-2">
+              <a href="carrito.html#registro" class="btn btn-success">Nuevo Cliente</a>
+              <a href="contacto.html" class="btn btn-outline-primary">Registrar Entrada</a>
+            </div>
+          </div>
         </div>
       </aside>
-
     </div>
   </main>
+
+  <div class="modal fade" id="modalVIP" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title fw-bold text-dark">Beneficios Premium VIP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Acceso a todas las instalaciones.</li>
+            <li>Asesoría nutricional y de entrenamiento semanal.</li>
+            <li>Clases grupales sin reserva previa.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <a href="carrito.html#registro" class="btn btn-success">Registrar Cliente</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="bg-dark text-white text-center py-3 mt-auto">
     <p class="mb-0 small">&copy; 2026 GymControl</p>
   </footer>
+</div>
 
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          estadisticas: { activas: 48, vencen: 7, entradas: 21 },
+          planes: [
+            { nombre: 'Básica', desc: 'Acceso a pesas y cardio. Horario general.', precio: 399, vip: false, img: 'imagenes/pesasocardio.jpg' },
+            { nombre: 'Plus', desc: 'Incluye clases grupales y rutinas.', precio: 599, vip: false, img: 'imagenes/clase-colectiva.jpg' },
+            { nombre: 'Premium', desc: 'Clases + 1 asesoría semanal.', precio: 899, vip: true, img: 'imagenes/entrenador.jpg' }
+          ]
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
